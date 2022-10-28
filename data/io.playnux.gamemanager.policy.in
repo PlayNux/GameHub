@@ -2,7 +2,7 @@
 <!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
 <policyconfig>
 	<vendor>Anatoliy Kashkin</vendor>
-	<vendor_url>https://tkashkin.tk/projects/gamehub</vendor_url>
+	<vendor_url>https://tkashkin.tk/projects/gamemanager</vendor_url>
 
 	<action id="@PROJECT_NAME@.polkit.overlayfs-helper">
 		<description>Manage overlays</description>

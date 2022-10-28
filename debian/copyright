@@ -1,6 +1,6 @@
 Format: http://dep.debian.net/deps/dep5
-Upstream-Name: com.github.tkashkin.gamehub
-Source: https://github.com/tkashkin/GameHub
+Upstream-Name: io.playnux.gamemanager
+Source: https://github.com/tkashkin/GameManager
 
 Files: *
 Copyright: 2018-2019 Anatoliy Kashkin

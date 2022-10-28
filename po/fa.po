@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.tkashkin.gamehub package.
+# This file is distributed under the same license as the io.playnux.gamemanager package.
 # Goudarz Jafari <goudarz.jafari@gmail.com>, 2019.
 # Alireza Jabbari <rhrurhraj@gmail.com>, 2020.
 # Mitsuha Miamizu <mitsuha.miamizu4444@gmail.com>, 2020.
@@ -8,12 +8,12 @@
 # Danial Behzadi <dani.behzi@ubuntu.com>, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: com.github.tkashkin.gamehub\n"
+"Project-Id-Version: io.playnux.gamemanager\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-26 06:40+0300\n"
 "PO-Revision-Date: 2022-01-15 21:53+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
-"Language-Team: Persian <https://hosted.weblate.org/projects/gamehub/"
+"Language-Team: Persian <https://hosted.weblate.org/projects/gamemanager/"
 "translations/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -249,10 +249,10 @@ msgstr "استیم آی‌دی شما از پرونده پیکربندی است�
 #: src/data/sources/steam/Steam.vala:46
 msgid ""
 "Steam config file not found.\n"
-"Login into your account in Steam client and return to GameHub"
+"Login into your account in Steam client and return to GameManager"
 msgstr ""
 "پرونده پیکربندی استیم یافت نشد.\n"
-"وارد حساب کاربری خود در استیم کلاینت شوید و به GameHub بازگردید"
+"وارد حساب کاربری خود در استیم کلاینت شوید و به GameManager بازگردید"
 
 #: src/data/sources/gog/GOGGame.vala:983
 #, c-format
@@ -764,8 +764,8 @@ msgstr "فعال شد"
 
 #: src/ui/dialogs/SettingsDialog/pages/general/Controller.vala:53
 #, fuzzy
-msgid "Focus GameHub window with Guide button"
-msgstr "پنجره تمرکز GameHub با دکمه راهنما"
+msgid "Focus GameManager window with Guide button"
+msgstr "پنجره تمرکز GameManager با دکمه راهنما"
 
 #: src/ui/dialogs/SettingsDialog/pages/general/Controller.vala:57
 msgid "Controllers"
@@ -1103,7 +1103,7 @@ msgctxt "about_link"
 msgid "Contributors"
 msgstr "مشارکت کنندگان"
 
-#. TRANSLATORS: Likely it should not be translated. GitHub Pulse is a page that shows recent repository activity: https://github.com/tkashkin/GameHub/pulse
+#. TRANSLATORS: Likely it should not be translated. GitHub Pulse is a page that shows recent repository activity: https://github.com/tkashkin/GameManager/pulse
 #: src/ui/dialogs/SettingsDialog/pages/About.vala:114
 #, fuzzy
 msgctxt "about_link"
@@ -1341,8 +1341,8 @@ msgstr ""
 
 #: src/ui/views/WelcomeView.vala:164
 #, fuzzy
-msgid "Return to GameHub after installing"
-msgstr "پس از نصب به GameHub بازگردید"
+msgid "Return to GameManager after installing"
+msgstr "پس از نصب به GameManager بازگردید"
 
 #: src/ui/views/GamesView/GamesView.vala:136
 msgid "No games"
@@ -1586,9 +1586,9 @@ msgstr ""
 #: src/ui/views/GameDetailsView/MultipleGamesDetailsView.vala:175
 #, c-format
 msgid ""
-"%d game will be removed from database. Restart GameHub to fetch new data"
+"%d game will be removed from database. Restart GameManager to fetch new data"
 msgid_plural ""
-"%d games will be removed from database. Restart GameHub to fetch new data"
+"%d games will be removed from database. Restart GameManager to fetch new data"
 msgstr[0] ""
 msgstr[1] ""
 

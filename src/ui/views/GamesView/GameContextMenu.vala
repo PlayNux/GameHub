@@ -1,30 +1,30 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 using Gdk;
 
-using GameHub.Data;
-using GameHub.Data.DB;
-using GameHub.Utils;
-using GameHub.UI.Widgets;
+using GameManager.Data;
+using GameManager.Data.DB;
+using GameManager.Utils;
+using GameManager.UI.Widgets;
 
-namespace GameHub.UI.Views.GamesView
+namespace GameManager.UI.Views.GamesView
 {
 	public class GameContextMenu: Gtk.Menu
 	{
@@ -144,7 +144,7 @@ namespace GameHub.UI.Views.GamesView
 				add(open_installers_dir);
 			}
 
-			if(game is GameHub.Data.Sources.GOG.GOGGame && (game as GameHub.Data.Sources.GOG.GOGGame).bonus_content_dir != null && (game as GameHub.Data.Sources.GOG.GOGGame).bonus_content_dir.query_exists())
+			if(game is GameManager.Data.Sources.GOG.GOGGame && (game as GameManager.Data.Sources.GOG.GOGGame).bonus_content_dir != null && (game as GameManager.Data.Sources.GOG.GOGGame).bonus_content_dir.query_exists())
 			{
 				if(add_dirs_separator) add(new Gtk.SeparatorMenuItem());
 				add_dirs_separator = false;
@@ -153,7 +153,7 @@ namespace GameHub.UI.Views.GamesView
 				add(open_bonuses_dir);
 			}
 
-			if(game is GameHub.Data.Sources.Steam.SteamGame && (game as GameHub.Data.Sources.Steam.SteamGame).screenshots_dir != null && (game as GameHub.Data.Sources.Steam.SteamGame).screenshots_dir.query_exists())
+			if(game is GameManager.Data.Sources.Steam.SteamGame && (game as GameManager.Data.Sources.Steam.SteamGame).screenshots_dir != null && (game as GameManager.Data.Sources.Steam.SteamGame).screenshots_dir.query_exists())
 			{
 				if(add_dirs_separator) add(new Gtk.SeparatorMenuItem());
 				add_dirs_separator = false;
@@ -231,9 +231,9 @@ namespace GameHub.UI.Views.GamesView
 
 		private void open_bonus_collection_directory()
 		{
-			if(game != null && game is GameHub.Data.Sources.GOG.GOGGame)
+			if(game != null && game is GameManager.Data.Sources.GOG.GOGGame)
 			{
-				var gog_game = game as GameHub.Data.Sources.GOG.GOGGame;
+				var gog_game = game as GameManager.Data.Sources.GOG.GOGGame;
 				if(gog_game != null && gog_game.bonus_content_dir != null && gog_game.bonus_content_dir.query_exists())
 				{
 					Utils.open_uri(gog_game.bonus_content_dir.get_uri());
@@ -243,9 +243,9 @@ namespace GameHub.UI.Views.GamesView
 
 		private void open_screenshots_directory()
 		{
-			if(game != null && game is GameHub.Data.Sources.Steam.SteamGame)
+			if(game != null && game is GameManager.Data.Sources.Steam.SteamGame)
 			{
-				var steam_game = game as GameHub.Data.Sources.Steam.SteamGame;
+				var steam_game = game as GameManager.Data.Sources.Steam.SteamGame;
 				if(steam_game != null && steam_game.screenshots_dir != null && steam_game.screenshots_dir.query_exists())
 				{
 					Utils.open_uri(steam_game.screenshots_dir.get_uri());

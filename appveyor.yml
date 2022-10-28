@@ -8,7 +8,7 @@ skip_tags: true
 image:
   - Ubuntu
 
-clone_folder: ~/build/GameHub
+clone_folder: ~/build/GameManager
 
 environment:
   keys_enc_secret:
@@ -29,9 +29,9 @@ test: off
 artifacts:
   - path: build/*/*.deb
     name: deb
-  - path: build/appimage/GameHub*.AppImage
+  - path: build/appimage/GameManager*.AppImage
     name: AppImage
-  - path: build/flatpak/GameHub*.flatpak
+  - path: build/flatpak/GameManager*.flatpak
     name: flatpak
 
 deploy:

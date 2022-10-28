@@ -1,33 +1,33 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 using Gdk;
 using GLib;
 using Gee;
-using GameHub.Utils;
-using GameHub.UI.Widgets;
+using GameManager.Utils;
+using GameManager.UI.Widgets;
 
-using GameHub.Data;
-using GameHub.Data.Sources.GOG;
-using GameHub.Data.Sources.Humble;
+using GameManager.Data;
+using GameManager.Data.Sources.GOG;
+using GameManager.Data.Sources.Humble;
 
-namespace GameHub.UI.Dialogs
+namespace GameManager.UI.Dialogs
 {
 	public class InstallDialog: Dialog
 	{
@@ -256,7 +256,7 @@ namespace GameHub.UI.Dialogs
 			opts_list = new CompatToolOptions(runnable, compat_tool_picker, true);
 			compat_tool_box.add(opts_list);
 
-			if(game is GameHub.Data.Sources.User.UserGame || runnable is GameHub.Data.Emulator)
+			if(game is GameManager.Data.Sources.User.UserGame || runnable is GameManager.Data.Emulator)
 			{
 				subtitle_label.no_show_all = true;
 				subtitle_label.visible = false;

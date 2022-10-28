@@ -9,7 +9,7 @@ bindir = os.path.join(prefix, 'bin')
 schemadir = os.path.join(os.environ['MESON_INSTALL_PREFIX'], 'share', 'glib-2.0', 'schemas')
 
 if os.environ.get('MESON_INSTALL_DESTDIR_PREFIX'):
-    subprocess.call(['ln', '-s', 'com.github.tkashkin.gamehub', os.path.join(os.environ.get('MESON_INSTALL_DESTDIR_PREFIX'), 'bin', 'gamehub')])
+    subprocess.call(['ln', '-s', 'io.playnux.gamemanager', os.path.join(os.environ.get('MESON_INSTALL_DESTDIR_PREFIX'), 'bin', 'gamemanager')])
 
 if not os.environ.get('DESTDIR'):
     print('Updating icon cache...')

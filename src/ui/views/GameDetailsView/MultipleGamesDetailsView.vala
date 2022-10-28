@@ -1,31 +1,31 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 using Gdk;
 using Gee;
 
-using GameHub.Data;
-using GameHub.Data.DB;
-using GameHub.Utils;
-using GameHub.UI.Widgets;
+using GameManager.Data;
+using GameManager.Data.DB;
+using GameManager.Utils;
+using GameManager.UI.Widgets;
 
-namespace GameHub.UI.Views.GameDetailsView
+namespace GameManager.UI.Views.GameDetailsView
 {
 	public class MultipleGamesDetailsView: Grid
 	{
@@ -172,7 +172,7 @@ namespace GameHub.UI.Views.GameDetailsView
 			{
 				add_action_separator();
 				var action_refresh = add_action("view-refresh", null, _("Refresh"), refresh_games);
-				action_refresh.text += "\n" + """<span size="smaller">%s</span>""".printf(ngettext("%d game will be removed from database. Restart GameHub to fetch new data", "%d games will be removed from database. Restart GameHub to fetch new data", refreshable.size).printf(refreshable.size));
+				action_refresh.text += "\n" + """<span size="smaller">%s</span>""".printf(ngettext("%d game will be removed from database. Restart GameManager to fetch new data", "%d games will be removed from database. Restart GameManager to fetch new data", refreshable.size).printf(refreshable.size));
 			}
 
 			actions.show_all();

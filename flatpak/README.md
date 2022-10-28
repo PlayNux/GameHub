@@ -28,5 +28,5 @@ scripts/build.sh build_flatpak
 #### Run
 
 ```bash
-flatpak run [-v] com.github.tkashkin.gamehub [--debug]
+flatpak run [-v] io.playnux.gamemanager [--debug]
 ```

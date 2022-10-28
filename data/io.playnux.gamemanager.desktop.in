@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=GameHub
-GenericName=GameHub
+Name=GameManager
+GenericName=GameManager
 Comment=All your games in one place
 Categories=Game;Amusement;
 Keywords=Game;Hub;Steam;GOG;Humble;HumbleBundle;
-Exec=com.github.tkashkin.gamehub
-X-GNOME-Gettext-Domain=com.github.tkashkin.gamehub
-Icon=com.github.tkashkin.gamehub
+Exec=io.playnux.gamemanager
+X-GNOME-Gettext-Domain=io.playnux.gamemanager
+Icon=io.playnux.gamemanager
 Terminal=false
 Type=Application

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-_GH_RDNN="com.github.tkashkin.gamehub"
+_GH_RDNN="io.playnux.gamemanager"
 _GH_VERSION="0.16.3"
 
 _GH_BRANCH="${APPVEYOR_REPO_BRANCH:-$(git symbolic-ref --short -q HEAD)}"
@@ -173,7 +173,7 @@ build_deb()
 			echo "[scripts/build.sh] Building binary package for ${_DEB_TARGET_DISTRO_ID} ${_DEB_TARGET_DISTRO_VERSION} (${_DEB_TARGET_DISTRO_NAME})"
 			dpkg-buildpackage -F -sa -us -uc
 			mkdir -p "build/${_BUILD_IMAGE}"
-			mv ../$_GH_RDNN*.deb "build/${_BUILD_IMAGE}/GameHub-${_BUILD_VERSION}-${_DEB_TARGET_DISTRO_NAME}-amd64.deb"
+			mv ../$_GH_RDNN*.deb "build/${_BUILD_IMAGE}/GameManager-${_BUILD_VERSION}-${_DEB_TARGET_DISTRO_NAME}-amd64.deb"
 		fi
 
 		if [[ -e "$_SCRIPTROOT/launchpad/passphrase" && -n "$keys_enc_secret" ]]; then
@@ -308,7 +308,7 @@ build_flatpak()
 	echo "[scripts/build.sh] Building"
 	flatpak-builder -y --user --repo="$_ROOT/build/flatpak/repo" --force-clean "$_ROOT/build/flatpak/build" "$_GH_RDNN.json"
 	echo "[scripts/build.sh] Building bundle"
-	flatpak build-bundle "$_ROOT/build/flatpak/repo" "$_ROOT/build/flatpak/GameHub-${_BUILD_IMAGE}-${_VERSION}.flatpak" "$_GH_RDNN"
+	flatpak build-bundle "$_ROOT/build/flatpak/repo" "$_ROOT/build/flatpak/GameManager-${_BUILD_IMAGE}-${_VERSION}.flatpak" "$_GH_RDNN"
 	echo "[scripts/build.sh] Removing flatpak build and repo directories"
 	rm -rf ".flatpak-builder" "$_ROOT/build/flatpak/build" "$_ROOT/build/flatpak/repo"
 	return 0

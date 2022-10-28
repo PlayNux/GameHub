@@ -1,31 +1,31 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 using GLib;
 using Soup;
-using GameHub.Utils;
+using GameManager.Utils;
 
 #if WEBKIT2GTK
 using WebKit;
 #endif
 
-namespace GameHub.UI.Windows
+namespace GameManager.UI.Windows
 {
 	public class WebAuthWindow: Window
 	{
@@ -58,7 +58,7 @@ namespace GameHub.UI.Windows
 
 			set_modal(true);
 
-			if(GameHub.Application.log_auth)
+			if(GameManager.Application.log_auth)
 			{
 				debug("[WebAuth/%s] Authenticating at `%s`; success_url_prefix: `%s`; success_cookie_name: `%s`", source, url, success_url_prefix, success_cookie_name);
 			}
@@ -86,7 +86,7 @@ namespace GameHub.UI.Windows
 
 				spinner.active = e != LoadEvent.FINISHED;
 
-				if(GameHub.Application.log_auth)
+				if(GameManager.Application.log_auth)
 				{
 					debug("[WebAuth/%s] URI: `%s`", source, uri);
 				}
@@ -99,7 +99,7 @@ namespace GameHub.UI.Windows
 							var cookies = webview.web_context.get_cookie_manager().get_cookies.end(res);
 							foreach(var cookie in cookies)
 							{
-								if(GameHub.Application.log_auth)
+								if(GameManager.Application.log_auth)
 								{
 									debug("[WebAuth/%s] [Cookie] `%s`=`%s`", source, cookie.name, cookie.value);
 								}
@@ -107,7 +107,7 @@ namespace GameHub.UI.Windows
 								{
 									is_finished = true;
 									var token = cookie.value;
-									if(GameHub.Application.log_auth)
+									if(GameManager.Application.log_auth)
 									{
 										debug("[WebAuth/%s] Finished with result `%s`", source, token);
 									}
@@ -124,7 +124,7 @@ namespace GameHub.UI.Windows
 				{
 					is_finished = true;
 					var token = uri.substring(success_url_prefix.length);
-					if(GameHub.Application.log_auth)
+					if(GameManager.Application.log_auth)
 					{
 						debug("[WebAuth/%s] Finished with result `%s`", source, token);
 					}

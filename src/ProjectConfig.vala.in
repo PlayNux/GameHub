@@ -1,6 +1,6 @@
 using Gtk;
 
-namespace GameHub.ProjectConfig
+namespace GameManager.ProjectConfig
 {
 	public const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
 	public const string GETTEXT_DIR = "@GETTEXT_DIR@";

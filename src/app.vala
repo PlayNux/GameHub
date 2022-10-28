@@ -1,36 +1,36 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 using Gdk;
 using Gee;
 
-using GameHub.Data;
-using GameHub.Data.DB;
-using GameHub.Data.Sources.Steam;
-using GameHub.Data.Sources.GOG;
-using GameHub.Data.Sources.Humble;
-using GameHub.Data.Sources.Itch;
-using GameHub.Data.Sources.User;
-using GameHub.Data.Tweaks;
-using GameHub.Utils;
+using GameManager.Data;
+using GameManager.Data.DB;
+using GameManager.Data.Sources.Steam;
+using GameManager.Data.Sources.GOG;
+using GameManager.Data.Sources.Humble;
+using GameManager.Data.Sources.Itch;
+using GameManager.Data.Sources.User;
+using GameManager.Data.Tweaks;
+using GameManager.Utils;
 
-namespace GameHub
+namespace GameManager
 {
 	public class Application: Gtk.Application
 	{
@@ -60,7 +60,7 @@ namespace GameHub
 
 		public static int worker_threads = -1;
 
-		private GameHub.UI.Windows.MainWindow? main_window;
+		private GameManager.UI.Windows.MainWindow? main_window;
 
 		public const string ACTION_PREFIX                          = "app.";
 		public const string ACTION_SETTINGS                        = "settings";
@@ -174,19 +174,19 @@ namespace GameHub
 
 			proton_latest.init();
 
-			IconTheme.get_default().add_resource_path("/com/github/tkashkin/gamehub/icons");
+			IconTheme.get_default().add_resource_path("/com/github/tkashkin/gamemanager/icons");
 
 			screen = Screen.get_default();
 
 			var app_provider = new CssProvider();
-			app_provider.load_from_resource("/com/github/tkashkin/gamehub/css/app.css");
+			app_provider.load_from_resource("/com/github/tkashkin/gamemanager/css/app.css");
 			StyleContext.add_provider_for_screen(screen, app_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
 			theme_providers = new HashMap<string, CssProvider>();
 			foreach(var theme in THEME_SPECIFIC_STYLES)
 			{
 				var provider = new CssProvider();
-				provider.load_from_resource(@"/com/github/tkashkin/gamehub/css/themes/$(theme).css");
+				provider.load_from_resource(@"/com/github/tkashkin/gamemanager/css/themes/$(theme).css");
 				theme_providers.set(theme, provider);
 			}
 
@@ -215,10 +215,10 @@ namespace GameHub
 				init();
 
 				#if MANETTE
-				GameHub.Utils.Gamepad.init();
+				GameManager.Utils.Gamepad.init();
 				#endif
 
-				main_window = new GameHub.UI.Windows.MainWindow(this);
+				main_window = new GameManager.UI.Windows.MainWindow(this);
 				main_window.show_all();
 			}
 		}
@@ -430,7 +430,7 @@ namespace GameHub
 
 		private void print_version(bool plain)
 		{
-			println(plain, "- GameHub");
+			println(plain, "- GameManager");
 			println(plain, "    Version: %s", ProjectConfig.VERSION);
 			println(plain, "    Branch:  %s", ProjectConfig.GIT_BRANCH);
 			if(ProjectConfig.GIT_COMMIT != null && ProjectConfig.GIT_COMMIT.length > 0)
@@ -456,12 +456,12 @@ namespace GameHub
 
 		private static void action_settings(SimpleAction action, Variant? args)
 		{
-			new GameHub.UI.Dialogs.SettingsDialog.SettingsDialog();
+			new GameManager.UI.Dialogs.SettingsDialog.SettingsDialog();
 		}
 
 		private static void action_about(SimpleAction action, Variant? args)
 		{
-			new GameHub.UI.Dialogs.SettingsDialog.SettingsDialog("about");
+			new GameManager.UI.Dialogs.SettingsDialog.SettingsDialog("about");
 		}
 
 		private static void action_corrupted_installer(SimpleAction action, Variant? args)
@@ -487,7 +487,7 @@ namespace GameHub
 						if(game_id.length > 0 && ":" in game_id)
 						{
 							var id_parts = game_id.split(":");
-							var game = GameHub.Data.DB.Tables.Games.get(id_parts[0], id_parts[1]);
+							var game = GameManager.Data.DB.Tables.Games.get(id_parts[0], id_parts[1]);
 							if(game != null)
 							{
 								var loop = new MainLoop();
@@ -529,7 +529,7 @@ namespace GameHub
 			if(game_id.length > 0 && ":" in game_id)
 			{
 				var id_parts = game_id.split(":");
-				var game = GameHub.Data.DB.Tables.Games.get(id_parts[0], id_parts[1]);
+				var game = GameManager.Data.DB.Tables.Games.get(id_parts[0], id_parts[1]);
 				if(game != null)
 				{
 					var loop = new MainLoop();

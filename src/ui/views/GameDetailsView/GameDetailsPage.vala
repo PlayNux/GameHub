@@ -1,31 +1,31 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 using Gdk;
 using Gee;
 
-using GameHub.Data;
-using GameHub.Utils;
-using GameHub.UI.Widgets;
-using GameHub.UI.Views.GamesView;
+using GameManager.Data;
+using GameManager.Utils;
+using GameManager.UI.Widgets;
+using GameManager.UI.Views.GamesView;
 
-namespace GameHub.UI.Views.GameDetailsView
+namespace GameManager.UI.Views.GameDetailsView
 {
 	public class GameDetailsPage: Gtk.Grid
 	{
@@ -113,7 +113,7 @@ namespace GameHub.UI.Views.GameDetailsView
 			icon_overlay.set_size_request(48, 48);
 			icon_overlay.valign = Align.START;
 
-			no_icon_indicator = new Image.from_icon_name("gamehub-symbolic", IconSize.DND);
+			no_icon_indicator = new Image.from_icon_name("gamemanager-symbolic", IconSize.DND);
 			no_icon_indicator.get_style_context().add_class("no-icon-indicator");
 			no_icon_indicator.halign = Align.CENTER;
 			no_icon_indicator.valign = Align.CENTER;
@@ -302,11 +302,11 @@ namespace GameHub.UI.Views.GameDetailsView
 			action_run.sensitive = game.can_be_launched();
 			action_open_directory.visible = s.state == Game.State.INSTALLED && game.install_dir != null && game.install_dir.query_exists();
 			action_open_installer_collection_directory.visible = game.installers_dir != null && game.installers_dir.query_exists();
-			action_open_bonus_collection_directory.visible = game is GameHub.Data.Sources.GOG.GOGGame && (game as GameHub.Data.Sources.GOG.GOGGame).bonus_content_dir != null && (game as GameHub.Data.Sources.GOG.GOGGame).bonus_content_dir.query_exists();
-			action_open_screenshots_directory.visible = game is GameHub.Data.Sources.Steam.SteamGame && (game as GameHub.Data.Sources.Steam.SteamGame).screenshots_dir != null && (game as GameHub.Data.Sources.Steam.SteamGame).screenshots_dir.query_exists();
+			action_open_bonus_collection_directory.visible = game is GameManager.Data.Sources.GOG.GOGGame && (game as GameManager.Data.Sources.GOG.GOGGame).bonus_content_dir != null && (game as GameManager.Data.Sources.GOG.GOGGame).bonus_content_dir.query_exists();
+			action_open_screenshots_directory.visible = game is GameManager.Data.Sources.Steam.SteamGame && (game as GameManager.Data.Sources.Steam.SteamGame).screenshots_dir != null && (game as GameManager.Data.Sources.Steam.SteamGame).screenshots_dir.query_exists();
 			action_open_store_page.visible = game.store_page != null;
-			action_uninstall.visible = s.state == Game.State.INSTALLED && !(game is GameHub.Data.Sources.GOG.GOGGame.DLC);
-			action_properties.visible = !(game is GameHub.Data.Sources.GOG.GOGGame.DLC);
+			action_uninstall.visible = s.state == Game.State.INSTALLED && !(game is GameManager.Data.Sources.GOG.GOGGame.DLC);
+			action_properties.visible = !(game is GameManager.Data.Sources.GOG.GOGGame.DLC);
 
 			if(action_run_with_compat.visible && game.compat_tool != null)
 			{
@@ -330,7 +330,7 @@ namespace GameHub.UI.Views.GameDetailsView
 
 		private async void update_game()
 		{
-			is_dialog = !(get_toplevel() is GameHub.UI.Windows.MainWindow);
+			is_dialog = !(get_toplevel() is GameManager.UI.Windows.MainWindow);
 
 			title.max_width_chars = is_dialog ? 36 : -1;
 
@@ -450,9 +450,9 @@ namespace GameHub.UI.Views.GameDetailsView
 
 		private void open_bonus_collection_directory()
 		{
-			if(_game != null && game is GameHub.Data.Sources.GOG.GOGGame)
+			if(_game != null && game is GameManager.Data.Sources.GOG.GOGGame)
 			{
-				var gog_game = game as GameHub.Data.Sources.GOG.GOGGame;
+				var gog_game = game as GameManager.Data.Sources.GOG.GOGGame;
 				if(gog_game != null && gog_game.bonus_content_dir != null && gog_game.bonus_content_dir.query_exists())
 				{
 					Utils.open_uri(gog_game.bonus_content_dir.get_uri());
@@ -462,9 +462,9 @@ namespace GameHub.UI.Views.GameDetailsView
 
 		private void open_screenshots_directory()
 		{
-			if(_game != null && game is GameHub.Data.Sources.Steam.SteamGame)
+			if(_game != null && game is GameManager.Data.Sources.Steam.SteamGame)
 			{
-				var steam_game = game as GameHub.Data.Sources.Steam.SteamGame;
+				var steam_game = game as GameManager.Data.Sources.Steam.SteamGame;
 				if(steam_game != null && steam_game.screenshots_dir != null && steam_game.screenshots_dir.query_exists())
 				{
 					Utils.open_uri(steam_game.screenshots_dir.get_uri());

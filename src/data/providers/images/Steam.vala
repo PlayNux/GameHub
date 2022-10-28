@@ -1,25 +1,25 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
-using GameHub.Utils;
+using GameManager.Utils;
 
-namespace GameHub.Data.Providers.Images
+namespace GameManager.Data.Providers.Images
 {
 	public class Steam: ImagesProvider
 	{
@@ -47,13 +47,13 @@ namespace GameHub.Data.Providers.Images
 			var results = new ArrayList<ImagesProvider.Result>();
 			string? appid = null;
 
-			if(game is GameHub.Data.Sources.Steam.SteamGame)
+			if(game is GameManager.Data.Sources.Steam.SteamGame)
 			{
 				appid = game.id;
 			}
 			else
 			{
-				appid = yield GameHub.Data.Sources.Steam.Steam.get_appid_from_name(game.name);
+				appid = yield GameManager.Data.Sources.Steam.Steam.get_appid_from_name(game.name);
 
 				// also contains unowned games:
 				if(appid == null) appid = yield get_appid_from_name(game.name);

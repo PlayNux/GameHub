@@ -9,7 +9,7 @@ debian/*
 !debian/copyright
 !debian/rules.in
 
-flatpak/com.github.tkashkin.gamehub.json
+flatpak/io.playnux.gamemanager.json
 flatpak/.flatpak-builder/
 
 *~

@@ -1,28 +1,28 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using GLib;
 using Gee;
 using Soup;
 
-using GameHub.Utils.Downloader;
+using GameManager.Utils.Downloader;
 
-namespace GameHub.Utils.Downloader.SoupDownloader
+namespace GameManager.Utils.Downloader.SoupDownloader
 {
 	public class SoupDownloader: Downloader
 	{
@@ -73,7 +73,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 
 			if(local.query_exists())
 			{
-				if(GameHub.Application.log_downloader)
+				if(GameManager.Application.log_downloader)
 				{
 					debug("[SoupDownloader] '%s' is already downloaded", uri);
 				}
@@ -104,7 +104,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 				dl_started(info);
 			}
 
-			if(GameHub.Application.log_downloader)
+			if(GameManager.Application.log_downloader)
 			{
 				debug("[SoupDownloader] Downloading '%s'...", uri);
 			}
@@ -144,7 +144,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 				download.local_tmp.move(download.local, FileCopyFlags.OVERWRITE);
 			}
 
-			if(GameHub.Application.log_downloader)
+			if(GameManager.Application.log_downloader)
 			{
 				debug("[SoupDownloader] Downloaded '%s'", uri);
 			}
@@ -201,7 +201,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 				{
 					resume_dl = true;
 					msg.request_headers.set_range(resume_from, -1);
-					if(GameHub.Application.log_downloader)
+					if(GameManager.Application.log_downloader)
 					{
 						debug(@"[SoupDownloader] Download part found, size: $(resume_from)");
 					}
@@ -211,7 +211,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 
 			msg.got_headers.connect(() => {
 				dl_bytes_total = msg.response_headers.get_content_length();
-				if(GameHub.Application.log_downloader)
+				if(GameManager.Application.log_downloader)
 				{
 					debug(@"[SoupDownloader] Content-Length: $(dl_bytes_total)");
 				}
@@ -228,7 +228,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 							if(disposition == "attachment" && dparams != null)
 							{
 								filename = dparams.get("filename");
-								if(filename != null && GameHub.Application.log_downloader)
+								if(filename != null && GameManager.Application.log_downloader)
 								{
 									debug(@"[SoupDownloader] Content-Disposition: filename=%s", filename);
 								}
@@ -248,7 +248,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 
 					if(download.local.query_exists())
 					{
-						if(GameHub.Application.log_downloader)
+						if(GameManager.Application.log_downloader)
 						{
 							debug(@"[SoupDownloader] '%s' exists", download.local.get_path());
 						}
@@ -259,7 +259,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 							return;
 						}
 					}
-					if(GameHub.Application.log_downloader)
+					if(GameManager.Application.log_downloader)
 					{
 						debug(@"[SoupDownloader] Downloading to '%s'", download.local.get_path());
 					}
@@ -268,7 +268,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 					int64 rstart = -1, rend = -1;
 					if(resume_dl && msg.response_headers.get_content_range(out rstart, out rend, out dl_bytes_total))
 					{
-						if(GameHub.Application.log_downloader)
+						if(GameManager.Application.log_downloader)
 						{
 							debug(@"[SoupDownloader] Content-Range is supported($(rstart)-$(rend)), resuming from $(resume_from)");
 							debug(@"[SoupDownloader] Content-Length: $(dl_bytes_total)");
@@ -412,7 +412,7 @@ namespace GameHub.Utils.Downloader.SoupDownloader
 			if(download.remote == null || !download.remote.query_exists()) return;
 			try
 			{
-				if(GameHub.Application.log_downloader)
+				if(GameManager.Application.log_downloader)
 				{
 					debug("[SoupDownloader] Copying '%s' to '%s'", download.remote.get_path(), download.local_tmp.get_path());
 				}

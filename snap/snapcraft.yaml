@@ -1,10 +1,10 @@
-name: gamehub
-version: "0.6.0"
+name: gamemanager
+version: "1.0"
 summary: Games manager written in Vala that supports GOG, Steam and Humble Bundle
 description: |
     Games manager/downloader/library written in Vala
     Currently supported sources: Steam, GOG, Humble Bundle
-icon: ../data/com.github.tkashkin.gamehub.svg
+icon: ../data/io.playnux.gamemanager.svg
 grade: stable
 confinement: strict
 
@@ -27,15 +27,15 @@ plugs:
         default-provider: gtk-common-themes:sounds-themes
 
 apps:
-    gamehub:
-        command: desktop-launch snapcraft-preload $SNAP/usr/bin/com.github.tkashkin.gamehub
-        desktop: usr/share/applications/com.github.tkashkin.gamehub.desktop
+    gamemanager:
+        command: desktop-launch snapcraft-preload $SNAP/usr/bin/io.playnux.gamemanager
+        desktop: usr/share/applications/io.playnux.gamemanager.desktop
         environment:
             LD_LIBRARY_PATH: $SNAP/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/:$LD_LIBRARY_PATH
         plugs: [network, network-observe, browser-support, gsettings, home, desktop, desktop-legacy, pulseaudio, opengl, x11, wayland, mir]
 
 parts:
-    gamehub:
+    gamemanager:
         source: ..
         plugin: meson
         meson-parameters: [--prefix=/usr, -Ddistro=generic, -Dsnap=true]

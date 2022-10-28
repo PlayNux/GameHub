@@ -1,4 +1,4 @@
-Source: com.github.tkashkin.gamehub
+Source: io.playnux.gamemanager
 Section: x11
 Priority: optional
 Maintainer: tkashkin <tkashkin@gmail.com>
@@ -19,7 +19,7 @@ Build-Depends: meson,
                libxtst-dev
 Standards-Version: 4.1.4
 
-Package: com.github.tkashkin.gamehub
+Package: io.playnux.gamemanager
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: file-roller, innoextract, wine, dosbox

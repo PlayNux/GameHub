@@ -1,28 +1,28 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
-using GameHub.UI.Widgets;
+using GameManager.UI.Widgets;
 
-using GameHub.Data;
-using GameHub.Utils;
+using GameManager.Data;
+using GameManager.Utils;
 
-namespace GameHub.UI.Views
+namespace GameManager.UI.Views
 {
 	public class WelcomeView: BaseView
 	{
@@ -37,7 +37,7 @@ namespace GameHub.UI.Views
 
 		construct
 		{
-			var ui_settings = GameHub.Settings.UI.Appearance.instance;
+			var ui_settings = GameManager.Settings.UI.Appearance.instance;
 
 			stack = new Stack();
 			stack.transition_type = StackTransitionType.CROSSFADE;
@@ -161,7 +161,7 @@ namespace GameHub.UI.Views
 				else
 				{
 					btn.title = _("Install %s").printf(src.name);
-					btn.description = _("Return to GameHub after installing");
+					btn.description = _("Return to GameManager after installing");
 					all_authenticated = false;
 				}
 			}

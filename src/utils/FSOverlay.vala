@@ -1,25 +1,25 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using GLib;
 using Gee;
 
-namespace GameHub.Utils
+namespace GameManager.Utils
 {
 	public class FSOverlay: Object
 	{
@@ -102,7 +102,7 @@ namespace GameHub.Utils
 
 			yield polkit_authenticate();
 
-			yield Utils.run({"pkexec", POLKIT_HELPER, "mount", id, options, target.get_path()}).log(GameHub.Application.log_verbose).run_sync_thread();
+			yield Utils.run({"pkexec", POLKIT_HELPER, "mount", id, options, target.get_path()}).log(GameManager.Application.log_verbose).run_sync_thread();
 		}
 
 		public async void umount()
@@ -111,7 +111,7 @@ namespace GameHub.Utils
 
 			while(id in (yield Utils.run({"mount"}).log(false).run_sync_thread(true)).output)
 			{
-				yield Utils.run({"pkexec", POLKIT_HELPER, "umount", id}).log(GameHub.Application.log_verbose).run_sync_thread();
+				yield Utils.run({"pkexec", POLKIT_HELPER, "umount", id}).log(GameManager.Application.log_verbose).run_sync_thread();
 				yield Utils.sleep_async(500);
 			}
 

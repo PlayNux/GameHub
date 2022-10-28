@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.tkashkin.gamehub package.
+# This file is distributed under the same license as the io.playnux.gamemanager package.
 # ParkSeongSoo <syvf64@naver.com>, 2019.
 # kimteak <xorrjs2331@gmail.com>, 2020.
 # kimtaek <xorrjs2331@gmail.com>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: com.github.tkashkin.gamehub\n"
+"Project-Id-Version: io.playnux.gamemanager\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-26 06:40+0300\n"
 "PO-Revision-Date: 2020-11-29 07:29+0000\n"
 "Last-Translator: kimtaek <xorrjs2331@gmail.com>\n"
-"Language-Team: Korean <https://hosted.weblate.org/projects/gamehub/"
+"Language-Team: Korean <https://hosted.weblate.org/projects/gamemanager/"
 "translations/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -247,7 +247,7 @@ msgstr "SteamID는 Steam 구성 파일에서 읽습니다"
 #: src/data/sources/steam/Steam.vala:46
 msgid ""
 "Steam config file not found.\n"
-"Login into your account in Steam client and return to GameHub"
+"Login into your account in Steam client and return to GameManager"
 msgstr ""
 "Steam 구성 파일을 찾을 수 없습니다.\n"
 "Steam 클라이언트에서 계정에 로그인하고 GameHub로 돌아갑니다"
@@ -741,7 +741,7 @@ msgid "Enabled"
 msgstr ""
 
 #: src/ui/dialogs/SettingsDialog/pages/general/Controller.vala:53
-msgid "Focus GameHub window with Guide button"
+msgid "Focus GameManager window with Guide button"
 msgstr ""
 
 #: src/ui/dialogs/SettingsDialog/pages/general/Controller.vala:57
@@ -1058,7 +1058,7 @@ msgctxt "about_link"
 msgid "Contributors"
 msgstr ""
 
-#. TRANSLATORS: Likely it should not be translated. GitHub Pulse is a page that shows recent repository activity: https://github.com/tkashkin/GameHub/pulse
+#. TRANSLATORS: Likely it should not be translated. GitHub Pulse is a page that shows recent repository activity: https://github.com/tkashkin/GameManager/pulse
 #: src/ui/dialogs/SettingsDialog/pages/About.vala:114
 msgctxt "about_link"
 msgid "Pulse"
@@ -1279,7 +1279,7 @@ msgid "Install %s"
 msgstr ""
 
 #: src/ui/views/WelcomeView.vala:164
-msgid "Return to GameHub after installing"
+msgid "Return to GameManager after installing"
 msgstr ""
 
 #: src/ui/views/GamesView/GamesView.vala:136
@@ -1517,9 +1517,9 @@ msgstr ""
 #: src/ui/views/GameDetailsView/MultipleGamesDetailsView.vala:175
 #, c-format
 msgid ""
-"%d game will be removed from database. Restart GameHub to fetch new data"
+"%d game will be removed from database. Restart GameManager to fetch new data"
 msgid_plural ""
-"%d games will be removed from database. Restart GameHub to fetch new data"
+"%d games will be removed from database. Restart GameManager to fetch new data"
 msgstr[0] ""
 
 #: src/ui/views/GameDetailsView/GameDetailsPage.vala:240

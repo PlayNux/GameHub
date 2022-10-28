@@ -1,27 +1,27 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
-using GameHub.Data.DB;
-using GameHub.Utils;
+using GameManager.Data.DB;
+using GameManager.Utils;
 using ZLib.Utility;
 
-namespace GameHub.Data.Sources.Steam
+namespace GameManager.Data.Sources.Steam
 {
 	public class Steam: GameSource
 	{
@@ -44,7 +44,7 @@ namespace GameHub.Data.Sources.Steam
 				var text = _("Your SteamID will be read from Steam configuration file");
 				if(!is_authenticated_in_steam_client)
 				{
-					text = _("Steam config file not found.\nLogin into your account in Steam client and return to GameHub");
+					text = _("Steam config file not found.\nLogin into your account in Steam client and return to GameManager");
 				}
 				return ".\n%s".printf(text);
 			}
@@ -172,7 +172,7 @@ namespace GameHub.Data.Sources.Steam
 
 					var last = !user.has_member("mostrecent") || user.get_string_member("mostrecent") == "1";
 
-					if(GameHub.Application.log_auth)
+					if(GameManager.Application.log_auth)
 					{
 						debug(@"[Auth] SteamID: $(user_id), PersonaName: $(user_name), last: $(last)");
 					}
@@ -541,7 +541,7 @@ namespace GameHub.Data.Sources.Steam
 			}
 
 			var tags_node = new BinaryVDF.ListNode.node("tags");
-			tags_node.add_node(new BinaryVDF.StringNode.node("0", "GameHub"));
+			tags_node.add_node(new BinaryVDF.StringNode.node("0", "GameManager"));
 
 			foreach(var tag in game.tags)
 			{

@@ -1,34 +1,34 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 using Gdk;
 using Gee;
 
-using GameHub.Data;
-using GameHub.Data.Sources.GOG;
+using GameManager.Data;
+using GameManager.Data.Sources.GOG;
 
-using GameHub.UI.Widgets;
-using GameHub.UI.Views.GamesView;
+using GameManager.UI.Widgets;
+using GameManager.UI.Views.GamesView;
 
-using GameHub.Utils;
+using GameManager.Utils;
 
-namespace GameHub.UI.Views.GameDetailsView.Blocks
+namespace GameManager.UI.Views.GameDetailsView.Blocks
 {
 	public class GOGDetails: GameDetailsBlock
 	{

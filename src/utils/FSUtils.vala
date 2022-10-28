@@ -1,29 +1,29 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
 using Gdk;
 using GLib;
 
-using GameHub.Data;
-using GameHub.Settings;
+using GameManager.Data;
+using GameManager.Settings;
 
-namespace GameHub.Utils
+namespace GameManager.Utils
 {
 	public class FSUtils
 	{
@@ -34,7 +34,7 @@ namespace GameHub.Utils
 
 		public class Paths
 		{
-			public class Settings: GameHub.Settings.SettingsSchema
+			public class Settings: GameManager.Settings.SettingsSchema
 			{
 				public string steam_home { get; set; }
 				public string gog_games { get; set; }
@@ -70,7 +70,7 @@ namespace GameHub.Utils
 				public const string OldImages = FSUtils.Paths.Cache.Home + "/images";
 				public const string Graphics = FSUtils.Paths.Cache.Home + "/graphics";
 
-				public const string Database = FSUtils.Paths.Cache.Home + "/gamehub.db";
+				public const string Database = FSUtils.Paths.Cache.Home + "/gamemanager.db";
 
 				public const string Compat = FSUtils.Paths.Cache.Home + "/compat";
 				public const string WineWrap = FSUtils.Paths.Cache.Compat + "/winewrap";
@@ -136,7 +136,7 @@ namespace GameHub.Utils
 				public const string ButlerExecutable = FSUtils.Paths.Itch.ButlerRoot + "/versions/%s/butler";
 			}
 
-			public class Collection: GameHub.Settings.SettingsSchema
+			public class Collection: GameManager.Settings.SettingsSchema
 			{
 				public string root { get; set; }
 
@@ -163,7 +163,7 @@ namespace GameHub.Utils
 					}
 				}
 
-				public class GOG: GameHub.Settings.SettingsSchema
+				public class GOG: GameManager.Settings.SettingsSchema
 				{
 					public string game_dir { get; set; }
 					public string installers { get; set; }
@@ -247,7 +247,7 @@ namespace GameHub.Utils
 					}
 				}
 
-				public class Humble: GameHub.Settings.SettingsSchema
+				public class Humble: GameManager.Settings.SettingsSchema
 				{
 					public string game_dir { get; set; }
 					public string installers { get; set; }

@@ -1,23 +1,23 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
-using GameHub.UI.Widgets;
+using GameManager.UI.Widgets;
 
 using Gdk;
 using Gee;
@@ -26,10 +26,10 @@ using Gee;
 using WebKit;
 #endif
 
-using GameHub.Data;
-using GameHub.Data.Sources.Humble;
+using GameManager.Data;
+using GameManager.Data.Sources.Humble;
 
-namespace GameHub.UI.Views.GameDetailsView.Blocks
+namespace GameManager.UI.Views.GameDetailsView.Blocks
 {
 	public class Description: GameDetailsBlock
 	{
@@ -62,7 +62,7 @@ namespace GameHub.UI.Views.GameDetailsView.Blocks
 
 			update_colors();
 			state_flags_changed.connect(() => update_colors());
-			GameHub.Settings.UI.Appearance.instance.notify["dark-theme"].connect(() => update_colors());
+			GameManager.Settings.UI.Appearance.instance.notify["dark-theme"].connect(() => update_colors());
 
 			description.set_size_request(-1, -1);
 			var desc = WRAPPER_HTML.printf(game.description);

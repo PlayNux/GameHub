@@ -1,15 +1,15 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.tkashkin.gamehub package.
+# This file is distributed under the same license as the io.playnux.gamemanager package.
 # Hannes Mattsson <hannes.mats.ola.mattsson@gmail.com>, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: com.github.tkashkin.gamehub\n"
+"Project-Id-Version: io.playnux.gamemanager\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-26 06:40+0300\n"
 "PO-Revision-Date: 2021-06-14 21:34+0000\n"
 "Last-Translator: Hannes <hannes.mats.ola.mattsson@gmail.com>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/gamehub/"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/gamemanager/"
 "translations/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -245,10 +245,10 @@ msgstr "Ditt SteamID kommer att läsas från Steam-konfigurationsfilen"
 #: src/data/sources/steam/Steam.vala:46
 msgid ""
 "Steam config file not found.\n"
-"Login into your account in Steam client and return to GameHub"
+"Login into your account in Steam client and return to GameManager"
 msgstr ""
 "Steam-konfigurationsfilen har inte hittats.\n"
-"Logga in på ditt konto i Steam-klienten och återvänd till GameHub"
+"Logga in på ditt konto i Steam-klienten och återvänd till GameManager"
 
 #: src/data/sources/gog/GOGGame.vala:983
 #, c-format
@@ -740,8 +740,8 @@ msgid "Enabled"
 msgstr "Aktiverad"
 
 #: src/ui/dialogs/SettingsDialog/pages/general/Controller.vala:53
-msgid "Focus GameHub window with Guide button"
-msgstr "Fokusera GameHub-fönstret med knappen Guide"
+msgid "Focus GameManager window with Guide button"
+msgstr "Fokusera GameManager-fönstret med knappen Guide"
 
 #: src/ui/dialogs/SettingsDialog/pages/general/Controller.vala:57
 msgid "Controllers"
@@ -1061,7 +1061,7 @@ msgctxt "about_link"
 msgid "Contributors"
 msgstr "Bidragsgivare"
 
-#. TRANSLATORS: Likely it should not be translated. GitHub Pulse is a page that shows recent repository activity: https://github.com/tkashkin/GameHub/pulse
+#. TRANSLATORS: Likely it should not be translated. GitHub Pulse is a page that shows recent repository activity: https://github.com/tkashkin/GameManager/pulse
 #: src/ui/dialogs/SettingsDialog/pages/About.vala:114
 msgctxt "about_link"
 msgid "Pulse"
@@ -1282,7 +1282,7 @@ msgid "Install %s"
 msgstr ""
 
 #: src/ui/views/WelcomeView.vala:164
-msgid "Return to GameHub after installing"
+msgid "Return to GameManager after installing"
 msgstr ""
 
 #: src/ui/views/GamesView/GamesView.vala:136
@@ -1526,9 +1526,9 @@ msgstr "Läs om"
 #: src/ui/views/GameDetailsView/MultipleGamesDetailsView.vala:175
 #, c-format
 msgid ""
-"%d game will be removed from database. Restart GameHub to fetch new data"
+"%d game will be removed from database. Restart GameManager to fetch new data"
 msgid_plural ""
-"%d games will be removed from database. Restart GameHub to fetch new data"
+"%d games will be removed from database. Restart GameManager to fetch new data"
 msgstr[0] ""
 msgstr[1] ""
 

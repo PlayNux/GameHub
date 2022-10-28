@@ -1,4 +1,4 @@
-project('com.github.tkashkin.gamehub', 'vala', 'c', version: '0.16.3')
+project('io.playnux.gamemanager', 'vala', 'c', version: '1.0')
 
 i18n = import('i18n')
 gnome = import('gnome')

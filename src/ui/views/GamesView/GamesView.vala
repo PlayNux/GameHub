@@ -1,19 +1,19 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
@@ -21,18 +21,18 @@ using Gdk;
 using GLib;
 using Gee;
 
-using GameHub.Data;
-using GameHub.Data.Adapters;
-using GameHub.Data.DB;
-using GameHub.Utils;
-using GameHub.UI.Widgets;
-using GameHub.UI.Windows;
-using GameHub.Settings;
+using GameManager.Data;
+using GameManager.Data.Adapters;
+using GameManager.Data.DB;
+using GameManager.Utils;
+using GameManager.UI.Widgets;
+using GameManager.UI.Windows;
+using GameManager.Settings;
 
-using GameHub.UI.Views.GamesView.List;
-using GameHub.UI.Views.GamesView.Grid;
+using GameManager.UI.Views.GamesView.List;
+using GameManager.UI.Views.GamesView.Grid;
 
-namespace GameHub.UI.Views.GamesView
+namespace GameManager.UI.Views.GamesView
 {
 	public class GamesView: BaseView
 	{
@@ -563,7 +563,7 @@ namespace GameHub.UI.Views.GamesView
 
 			if(src != null && src.games_count == 0)
 			{
-				if(src is GameHub.Data.Sources.User.User)
+				if(src is GameManager.Data.Sources.User.User)
 				{
 					empty_alert.title = _("No user-added games");
 					empty_alert.description = _("Add some games using plus button");
@@ -622,7 +622,7 @@ namespace GameHub.UI.Views.GamesView
 			messages.get_children().foreach(c => messages.remove(c));
 
 			games_adapter.load_games(src => {
-				if(src.games_count == 0 && src is GameHub.Data.Sources.Steam.Steam)
+				if(src.games_count == 0 && src is GameManager.Data.Sources.Steam.Steam)
 				{
 					var msg = add_message(_("No games were loaded from Steam. Set your games list privacy to public or use your own Steam API key in settings."), MessageType.WARNING);
 					msg.add_button(_("Privacy"), 1);
@@ -879,7 +879,7 @@ namespace GameHub.UI.Views.GamesView
 				var b = Gamepad.Buttons.get(btn);
 				b.emit_key_event(press);
 
-				if(GameHub.Application.log_verbose && !Runnable.IsLaunched && !Sources.Steam.Steam.IsAnyAppRunning)
+				if(GameManager.Application.log_verbose && !Runnable.IsLaunched && !Sources.Steam.Steam.IsAnyAppRunning)
 				{
 					debug("[Gamepad] Button %s: %s (%s) [%d]", (press ? "pressed" : "released"), b.name, b.long_name, btn);
 				}

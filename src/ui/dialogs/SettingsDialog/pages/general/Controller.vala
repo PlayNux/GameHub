@@ -1,27 +1,27 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 
-using GameHub.Utils;
-using GameHub.UI.Widgets;
+using GameManager.Utils;
+using GameManager.UI.Widgets;
 
-namespace GameHub.UI.Dialogs.SettingsDialog.Pages.General
+namespace GameManager.UI.Dialogs.SettingsDialog.Pages.General
 {
 	public class Controller: SettingsDialogPage
 	{
@@ -35,7 +35,7 @@ namespace GameHub.UI.Dialogs.SettingsDialog.Pages.General
 				dialog: dlg,
 				title: _("Controller"),
 				description: _("Enabled"),
-				icon_name: "gamehub-symbolic",
+				icon_name: "gamemanager-symbolic",
 				activatable: true
 			);
 			status = description;
@@ -50,7 +50,7 @@ namespace GameHub.UI.Dialogs.SettingsDialog.Pages.General
 
 			settings = Settings.Controller.instance;
 
-			var focus_switch = add_switch(_("Focus GameHub window with Guide button"), settings.focus_window, v => { settings.focus_window = v; update(); request_restart(); });
+			var focus_switch = add_switch(_("Focus GameManager window with Guide button"), settings.focus_window, v => { settings.focus_window = v; update(); request_restart(); });
 			focus_switch.margin_start = 16;
 			focus_switch.margin_end = 12;
 
@@ -135,7 +135,7 @@ namespace GameHub.UI.Dialogs.SettingsDialog.Pages.General
 				hbox.margin_start = hbox.margin_end = 8;
 				hbox.margin_top = hbox.margin_bottom = 4;
 
-				var icon = new Image.from_icon_name("gamehub-symbolic", IconSize.SMALL_TOOLBAR);
+				var icon = new Image.from_icon_name("gamemanager-symbolic", IconSize.SMALL_TOOLBAR);
 				icon.valign = Align.CENTER;
 
 				var name = new Label(controller);

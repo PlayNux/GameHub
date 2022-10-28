@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-	<gresource prefix="/com/github/tkashkin/gamehub/icons">
+	<gresource prefix="/com/github/tkashkin/gamemanager/icons">
 		<file alias="scalable/actions/sources-all-symbolic.svg">symbolic/sources/sources-all.svg</file>
 		<file alias="scalable/actions/source-steam-symbolic.svg">symbolic/sources/steam.svg</file>
 		<file alias="scalable/actions/source-gog-symbolic.svg">symbolic/sources/gog.svg</file>
@@ -34,7 +34,7 @@
 		<file alias="scalable/actions/gh-game-favorite-symbolic.svg">symbolic/game-favorite.svg</file>
 		<file alias="scalable/actions/gh-game-updated-symbolic.svg">symbolic/game-updated.svg</file>
 
-		<file alias="scalable/actions/gamehub-symbolic.svg">symbolic/gamehub.svg</file>
+		<file alias="scalable/actions/gamemanager-symbolic.svg">symbolic/gamemanager.svg</file>
 
 		<file alias="scalable/actions/controller-button-a.svg">normal/controller/a.svg</file>
 		<file alias="scalable/actions/controller-button-b.svg">normal/controller/b.svg</file>

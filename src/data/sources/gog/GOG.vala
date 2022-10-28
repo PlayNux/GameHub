@@ -1,26 +1,26 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
-using GameHub.Data.DB;
-using GameHub.Utils;
+using GameManager.Data.DB;
+using GameManager.Utils;
 
-namespace GameHub.Data.Sources.GOG
+namespace GameManager.Data.Sources.GOG
 {
 	public class GOG: GameSource
 	{
@@ -106,12 +106,12 @@ namespace GameHub.Data.Sources.GOG
 				return true;
 			}
 
-			var wnd = new GameHub.UI.Windows.WebAuthWindow(this.name, @"https://auth.gog.com/auth?client_id=$(CLIENT_ID)&redirect_uri=$(REDIRECT)&response_type=code&layout=client2", "https://embed.gog.com/on_login_success?origin=client&code=");
+			var wnd = new GameManager.UI.Windows.WebAuthWindow(this.name, @"https://auth.gog.com/auth?client_id=$(CLIENT_ID)&redirect_uri=$(REDIRECT)&response_type=code&layout=client2", "https://embed.gog.com/on_login_success?origin=client&code=");
 
 			wnd.finished.connect(code =>
 			{
 				user_auth_code = code;
-				if(GameHub.Application.log_auth)
+				if(GameManager.Application.log_auth)
 				{
 					debug("[Auth] GOG auth code: %s", code);
 				}
@@ -145,7 +145,7 @@ namespace GameHub.Data.Sources.GOG
 			settings.access_token = user_token ?? "";
 			settings.refresh_token = user_refresh_token ?? "";
 
-			if(GameHub.Application.log_auth)
+			if(GameManager.Application.log_auth)
 			{
 				debug("[Auth] GOG access token: %s", user_token);
 				debug("[Auth] GOG refresh token: %s", user_refresh_token);
@@ -162,7 +162,7 @@ namespace GameHub.Data.Sources.GOG
 				return false;
 			}
 
-			if(GameHub.Application.log_auth)
+			if(GameManager.Application.log_auth)
 			{
 				debug("[Auth] Refreshing GOG access token with refresh token: %s", user_refresh_token);
 			}
@@ -184,7 +184,7 @@ namespace GameHub.Data.Sources.GOG
 			settings.access_token = user_token ?? "";
 			settings.refresh_token = user_refresh_token ?? "";
 
-			if(GameHub.Application.log_auth)
+			if(GameManager.Application.log_auth)
 			{
 				debug("[Auth] GOG access token: %s", user_token);
 				debug("[Auth] GOG refresh token: %s", user_refresh_token);
@@ -327,7 +327,7 @@ namespace GameHub.Data.Sources.GOG
 								var id = t.get_object().get_string_member("id");
 								var name = t.get_object().get_string_member("name");
 								Tables.Tags.add(new Tables.Tags.Tag("gog:" + id, name, icon));
-								if(GameHub.Application.log_verbose)
+								if(GameManager.Application.log_verbose)
 								{
 									debug("[GOG] Imported tag: %s (%s)", name, id);
 								}

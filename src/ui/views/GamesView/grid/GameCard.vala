@@ -1,32 +1,32 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 using Gdk;
 using Gee;
 
-using GameHub.Data;
-using GameHub.Data.Adapters;
-using GameHub.Data.DB;
-using GameHub.Utils;
-using GameHub.UI.Widgets;
+using GameManager.Data;
+using GameManager.Data.Adapters;
+using GameManager.Data.DB;
+using GameManager.Utils;
+using GameManager.UI.Widgets;
 
-namespace GameHub.UI.Views.GamesView.Grid
+namespace GameManager.UI.Views.GamesView.Grid
 {
 	public class GameCard: FlowBoxChild
 	{
@@ -165,7 +165,7 @@ namespace GameHub.UI.Views.GamesView.Grid
 			progress_bar.valign = Align.END;
 			progress_bar.get_style_context().add_class("progress");
 
-			no_image_indicator = new Image.from_icon_name("gamehub-symbolic", IconSize.DIALOG);
+			no_image_indicator = new Image.from_icon_name("gamemanager-symbolic", IconSize.DIALOG);
 			no_image_indicator.get_style_context().add_class("no-image-indicator");
 			no_image_indicator.halign = Align.CENTER;
 			no_image_indicator.valign = Align.CENTER;
@@ -457,7 +457,7 @@ namespace GameHub.UI.Views.GamesView.Grid
 		private void updates_handler()
 		{
 			Idle.add(() => {
-				updated_icon.visible = game is GameHub.Data.Sources.GOG.GOGGame && (game as GameHub.Data.Sources.GOG.GOGGame).has_updates;
+				updated_icon.visible = game is GameManager.Data.Sources.GOG.GOGGame && (game as GameManager.Data.Sources.GOG.GOGGame).has_updates;
 				return Source.REMOVE;
 			}, Priority.LOW);
 		}

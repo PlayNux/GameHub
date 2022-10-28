@@ -1,27 +1,27 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 
-using GameHub.Data;
-using GameHub.Data.Tweaks;
+using GameManager.Data;
+using GameManager.Data.Tweaks;
 
-namespace GameHub.Utils
+namespace GameManager.Utils
 {
 	public delegate void Future();
 	public delegate void FutureBoolean(bool result);
@@ -42,7 +42,7 @@ namespace GameHub.Utils
 		}
 		public void run()
 		{
-			bool dbg = GameHub.Application.log_workers && log && !name.has_prefix("Merging-");
+			bool dbg = GameManager.Application.log_workers && log && !name.has_prefix("Merging-");
 			if(dbg) debug("[Worker] %s started", name);
 			worker();
 			if(dbg) debug("[Worker] %s finished", name);
@@ -181,7 +181,7 @@ namespace GameHub.Utils
 			cmd_expanded = true;
 			#endif
 
-			if(_log && GameHub.Application.log_verbose)
+			if(_log && GameManager.Application.log_verbose)
 			{
 				if(cmd_expanded) debug("     cmd: {'%s'}", string.joinv("' '", _cmd));
 				debug("     dir: '%s'", _dir);
@@ -471,7 +471,7 @@ namespace GameHub.Utils
 		{
 			notification = config(notification);
 		}
-		GameHub.Application.instance.send_notification(null, notification);
+		GameManager.Application.instance.send_notification(null, notification);
 	}
 
 	private const string NAME_CHARS_TO_STRIP = "!@#$%^&*()-_+=:~`;?'\"<>,./\\|’“”„«»™℠®©";
@@ -784,7 +784,7 @@ namespace GameHub.Utils
 
 		private static bool log_filter(string? d, LogLevelFlags flags, string msg)
 		{
-			if(!GameHub.Application.log_no_filters)
+			if(!GameManager.Application.log_no_filters)
 			{
 				if(d == "GLib-GIO" && msg.has_prefix("Settings schema '")) return true;
 				if(d in HIDDEN_DOMAINS) return false;

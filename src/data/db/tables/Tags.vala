@@ -1,31 +1,31 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
 using Sqlite;
 
-using GameHub.Utils;
+using GameManager.Utils;
 
-using GameHub.Data.Sources.Steam;
-using GameHub.Data.Sources.GOG;
-using GameHub.Data.Sources.Humble;
+using GameManager.Data.Sources.Steam;
+using GameManager.Data.Sources.GOG;
+using GameManager.Data.Sources.Humble;
 
-namespace GameHub.Data.DB.Tables
+namespace GameManager.Data.DB.Tables
 {
 	public class Tags: Table
 	{
@@ -109,7 +109,7 @@ namespace GameHub.Data.DB.Tables
 			DYNAMIC_TAGS.add(BUILTIN_UNINSTALLED);
 			DYNAMIC_TAGS.add(BUILTIN_INSTALLED);
 
-			var settings = GameHub.Settings.UI.Behavior.instance;
+			var settings = GameManager.Settings.UI.Behavior.instance;
 			settings.notify["import-tags"].connect(() => {
 				foreach(var tag in TAGS)
 				{
@@ -149,7 +149,7 @@ namespace GameHub.Data.DB.Tables
 				TAGS.add(tag);
 				if(tag.id.has_prefix(Tag.IMPORTED_GOG_PREFIX))
 				{
-					tag.enabled = GameHub.Settings.UI.Behavior.instance.import_tags;
+					tag.enabled = GameManager.Settings.UI.Behavior.instance.import_tags;
 				}
 				instance.tags_updated();
 			}

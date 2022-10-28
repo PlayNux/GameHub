@@ -1,26 +1,26 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
-using GameHub.Data.DB;
-using GameHub.Utils;
+using GameManager.Data.DB;
+using GameManager.Utils;
 
-namespace GameHub.Data.Sources.Humble
+namespace GameManager.Data.Sources.Humble
 {
 	public class Trove: Humble
 	{
@@ -36,7 +36,7 @@ namespace GameHub.Data.Sources.Humble
 		public override bool enabled
 		{
 			get {
-				// Disable Trove unconditionally: https://github.com/tkashkin/GameHub/issues/611
+				// Disable Trove unconditionally: https://github.com/tkashkin/GameManager/issues/611
 				// return Settings.Auth.Humble.instance.enabled && Settings.Auth.Humble.instance.load_trove_games;
 				return false;
 			}
@@ -165,7 +165,7 @@ namespace GameHub.Data.Sources.Humble
 
 			var signed_url = signed != null && signed.has_member("signed_url") ? signed.get_string_member("signed_url") : null;
 
-			if(GameHub.Application.log_verbose)
+			if(GameManager.Application.log_verbose)
 			{
 				debug("[Trove.sign_url] '%s':'%s' -> '%s'", machine_name, filename, signed_url);
 			}

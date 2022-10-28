@@ -1,26 +1,26 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
 
-using GameHub.Utils;
+using GameManager.Utils;
 
-namespace GameHub.Data.Tweaks
+namespace GameManager.Data.Tweaks
 {
 	public class Tweak: Object
 	{
@@ -209,7 +209,7 @@ namespace GameHub.Data.Tweaks
 
 			foreach(var data_dir in FSUtils.get_data_dirs("tweaks"))
 			{
-				if(GameHub.Application.log_verbose)
+				if(GameManager.Application.log_verbose)
 				{
 					debug("[Tweak.load_tweaks] Directory: '%s'", data_dir.get_path());
 				}
@@ -226,7 +226,7 @@ namespace GameHub.Data.Tweaks
 							var file = data_dir.get_child(fname);
 							var loaded_tweaks = load_from_file(file);
 
-							if(GameHub.Application.log_verbose)
+							if(GameManager.Application.log_verbose)
 							{
 								debug("[Tweak.load_tweaks] File: '%s'; %d tweak(s):", file.get_path(), loaded_tweaks.size);
 							}
@@ -235,7 +235,7 @@ namespace GameHub.Data.Tweaks
 							{
 								tweaks.set(tweak.id, tweak);
 
-								if(GameHub.Application.log_verbose)
+								if(GameManager.Application.log_verbose)
 								{
 									debug("[Tweak.load_tweaks] %s", Json.to_string(new Json.Node(Json.NodeType.OBJECT).init_object(tweak.to_json()), false));
 								}

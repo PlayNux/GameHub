@@ -1,11 +1,11 @@
 {
-	"app-id": "com.github.tkashkin.gamehub",
+	"app-id": "io.playnux.gamemanager",
 	"base": "io.elementary.BaseApp",
 	"base-version": "juno",
 	"runtime": "org.gnome.Platform",
 	"runtime-version": "3.28",
 	"sdk": "org.gnome.Sdk",
-	"command": "com.github.tkashkin.gamehub",
+	"command": "io.playnux.gamemanager",
 	"separate-locales": false,
 	"build-options": {
 		"env": {
@@ -68,7 +68,7 @@
 		"libs/libs.json",
 
 		{
-			"name": "gamehub",
+			"name": "gamemanager",
 			"buildsystem": "meson",
 			"config-opts": [
 				"--buildtype=debug",

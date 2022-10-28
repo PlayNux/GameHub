@@ -1,25 +1,25 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
-using GameHub.Utils;
+using GameManager.Utils;
 
-namespace GameHub.Data.Providers.Images
+namespace GameManager.Data.Providers.Images
 {
 	public class SteamGridDB: ImagesProvider
 	{
@@ -45,7 +45,7 @@ namespace GameHub.Data.Providers.Images
 			var results = new ArrayList<ImagesProvider.Result>();
 
 			ArrayList<SGDBGame>? games;
-			if(game is GameHub.Data.Sources.Steam.SteamGame)
+			if(game is GameManager.Data.Sources.Steam.SteamGame)
 			{
 				games = yield games_by_steam_appid(game.id);
 			}
@@ -68,7 +68,7 @@ namespace GameHub.Data.Providers.Images
 						var dimensions = size != null ? "?dimensions=%dx%d".printf(size.width, size.height) : "";
 
 						var endpoint = "/grids/game/%s%s".printf(g.id, dimensions);
-						//if(game is GameHub.Data.Sources.Steam.SteamGame) endpoint = "/grids/steam/%s%s".printf(game.id, dimensions);
+						//if(game is GameManager.Data.Sources.Steam.SteamGame) endpoint = "/grids/steam/%s%s".printf(game.id, dimensions);
 
 						var root = yield Parser.parse_remote_json_file_async(BASE_URL + endpoint, "GET", Settings.Providers.Images.SteamGridDB.instance.api_key);
 						if(root == null || root.get_node_type() != Json.NodeType.OBJECT) continue;

@@ -1,27 +1,27 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
-using GameHub.UI.Widgets;
+using GameManager.UI.Widgets;
 
-using GameHub.Utils;
+using GameManager.Utils;
 
-namespace GameHub.UI.Dialogs.SettingsDialog.Pages
+namespace GameManager.UI.Dialogs.SettingsDialog.Pages
 {
 	public class About: SettingsSidebar.SettingsPage
 	{
@@ -34,7 +34,7 @@ namespace GameHub.UI.Dialogs.SettingsDialog.Pages
 		{
 			Object(
 				header: _("About"),
-				title: "GameHub",
+				title: "GameManager",
 				status: ProjectConfig.VERSION,
 				icon_name: ProjectConfig.PROJECT_NAME
 			);
@@ -58,7 +58,7 @@ namespace GameHub.UI.Dialogs.SettingsDialog.Pages
 			appinfo_grid.row_spacing = 0;
 			appinfo_grid.column_spacing = 8;
 
-			var app_title = Styled.H2Label("GameHub");
+			var app_title = Styled.H2Label("GameManager");
 			app_title.hexpand = true;
 			app_title.xalign = 0;
 
@@ -89,30 +89,30 @@ namespace GameHub.UI.Dialogs.SettingsDialog.Pages
 			links_view.expand = true;
 			links_view.margin = 4;
 
-			add_link(C_("about_link", "Website"), "https://tkashkin.tk/projects/gamehub", "web-browser-symbolic");
+			add_link(C_("about_link", "Website"), "https://github.com/PlayNux/GameManager", "web-browser-symbolic");
 
 			var source_mirrors = new Box(Orientation.HORIZONTAL, 0);
 
-			add_link(C_("about_link", "Source code on GitHub"), "https://github.com/tkashkin/GameHub", "about-link-github-symbolic", source_mirrors).hexpand = true;
-			add_link(null, "https://codeberg.org/tkashkin/GameHub", "about-link-codeberg.org", source_mirrors).hexpand = false;
+			add_link(C_("about_link", "Source code on GitHub"), "https://github.com/PlayNux/GameManager", "about-link-github-symbolic", source_mirrors).hexpand = true;
+			add_link(null, "https://codeberg.org/tkashkin/gamehub", "about-link-codeberg.org", source_mirrors).hexpand = false;
 			add_link(null, "https://repo.or.cz/GameHub.git", "about-link-git-symbolic", source_mirrors).hexpand = false;
 			add_link(null, "https://git.froggi.es/tkashkin/gamehub", "about-link-git.froggi.es", source_mirrors).hexpand = false;
 
 			links_view.add(source_mirrors);
 
-			add_link(C_("about_link", "Report a problem"), "https://github.com/tkashkin/GameHub/issues/new/choose", "dialog-warning-symbolic");
+			add_link(C_("about_link", "Report a problem"), "https://github.com/PlayNux/GameManager/issues/new/choose", "dialog-warning-symbolic");
 			add_link(C_("about_link", "Suggest translations"), "https://hosted.weblate.org/engage/gamehub", "preferences-desktop-locale-symbolic");
 
 			small_links_view = new Box(Orientation.HORIZONTAL, 8);
 			small_links_view.margin = 8;
 			small_links_view.halign = Align.END;
 
-			add_small_link(C_("about_link", "Issues"), "https://github.com/tkashkin/GameHub/issues");
-			add_small_link(C_("about_link", "Contributors"), "https://github.com/tkashkin/GameHub/graphs/contributors");
+			add_small_link(C_("about_link", "Issues"), "https://github.com/PlayNux/GameManager/issues");
+			add_small_link(C_("about_link", "Contributors"), "https://github.com/PlayNux/GameManager/graphs/contributors");
 
-			// TRANSLATORS: Likely it should not be translated. GitHub Pulse is a page that shows recent repository activity: https://github.com/tkashkin/GameHub/pulse
-			add_small_link(C_("about_link", "Pulse"), "https://github.com/tkashkin/GameHub/pulse");
-			add_small_link(C_("about_link", "Forks"), "https://github.com/tkashkin/GameHub/network");
+			// TRANSLATORS: Likely it should not be translated. GitHub Pulse is a page that shows recent repository activity: https://github.com/tkashkin/GameManager/pulse
+			add_small_link(C_("about_link", "Pulse"), "https://github.com/PlayNux/GameManager/pulse");
+			add_small_link(C_("about_link", "Forks"), "https://github.com/PlayNux/GameManager/network");
 
 			content_hbox.add(logo);
 			content_hbox.add(appinfo_grid);
@@ -126,7 +126,7 @@ namespace GameHub.UI.Dialogs.SettingsDialog.Pages
 
 		private void copy_app_info()
 		{
-			var info = "- GameHub\n" +
+			var info = "- GameManager\n" +
 				"    Version: %s\n".printf(ProjectConfig.VERSION) +
 				"    Branch:  %s\n".printf(ProjectConfig.GIT_BRANCH);
 
@@ -153,9 +153,9 @@ namespace GameHub.UI.Dialogs.SettingsDialog.Pages
 			Clipboard.get_default(Gdk.Display.get_default()).set_text(info, info.length);
 		}
 
-		private GameHub.UI.Widgets.ActionButton add_link(string? title, string url, string icon="web-browser", Container? parent=null)
+		private GameManager.UI.Widgets.ActionButton add_link(string? title, string url, string icon="web-browser", Container? parent=null)
 		{
-			var button = new GameHub.UI.Widgets.ActionButton(icon, null, title ?? url, title != null, true);
+			var button = new GameManager.UI.Widgets.ActionButton(icon, null, title ?? url, title != null, true);
 			button.tooltip_text = url;
 
 			button.clicked.connect(() => {

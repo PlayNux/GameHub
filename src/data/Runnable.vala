@@ -1,28 +1,28 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
 using Gtk;
 
-using GameHub.Utils;
-using GameHub.Data.DB;
+using GameManager.Utils;
+using GameManager.Data.DB;
 
-namespace GameHub.Data
+namespace GameManager.Data
 {
 	public abstract class Runnable: Object
 	{
@@ -107,9 +107,9 @@ namespace GameHub.Data
 		public virtual FileChooser setup_executable_chooser()
 		{
 			#if GTK_3_22
-			var chooser = new FileChooserNative(_("Select executable"), GameHub.UI.Windows.MainWindow.instance, FileChooserAction.OPEN, _("Select"), _("Cancel"));
+			var chooser = new FileChooserNative(_("Select executable"), GameManager.UI.Windows.MainWindow.instance, FileChooserAction.OPEN, _("Select"), _("Cancel"));
 			#else
-			var chooser = new FileChooserDialog(_("Select executable"), GameHub.UI.Windows.MainWindow.instance, FileChooserAction.OPEN, _("Select"), ResponseType.ACCEPT, _("Cancel"), ResponseType.CANCEL);
+			var chooser = new FileChooserDialog(_("Select executable"), GameManager.UI.Windows.MainWindow.instance, FileChooserAction.OPEN, _("Select"), ResponseType.ACCEPT, _("Cancel"), ResponseType.CANCEL);
 			#endif
 
 			try
@@ -163,7 +163,7 @@ namespace GameHub.Data
 
 		public virtual void import(bool update=true)
 		{
-			var chooser = new FileChooserDialog(_("Select directory"), GameHub.UI.Windows.MainWindow.instance, FileChooserAction.SELECT_FOLDER);
+			var chooser = new FileChooserDialog(_("Select directory"), GameManager.UI.Windows.MainWindow.instance, FileChooserAction.SELECT_FOLDER);
 
 			var games_dir = "";
 			if(this is Sources.GOG.GOGGame)
@@ -734,7 +734,7 @@ namespace GameHub.Data
 							}
 						}
 
-						if(dirname != null && !(runnable is GameHub.Data.Sources.GOG.GOGGame.DLC))
+						if(dirname != null && !(runnable is GameManager.Data.Sources.GOG.GOGGame.DLC))
 						{
 							FSUtils.mv_up(runnable.install_dir, dirname.replace(" ", "\\ "));
 						}
@@ -748,7 +748,7 @@ namespace GameHub.Data
 
 					runnable.update_status();
 
-					if(runnable is GameHub.Data.Sources.GOG.GOGGame && !(runnable is GameHub.Data.Sources.GOG.GOGGame.DLC) && (runnable.executable == null || !runnable.executable.query_exists()))
+					if(runnable is GameManager.Data.Sources.GOG.GOGGame && !(runnable is GameManager.Data.Sources.GOG.GOGGame.DLC) && (runnable.executable == null || !runnable.executable.query_exists()))
 					{
 						if(runnable.actions != null && runnable.actions.size > 0)
 						{
@@ -770,7 +770,7 @@ namespace GameHub.Data
 						runnable.update_status();
 					}
 
-					if((runnable.executable == null || !runnable.executable.query_exists()) && !(runnable is GameHub.Data.Sources.GOG.GOGGame.DLC))
+					if((runnable.executable == null || !runnable.executable.query_exists()) && !(runnable is GameManager.Data.Sources.GOG.GOGGame.DLC))
 					{
 						if(game != null)
 						{
@@ -917,7 +917,7 @@ namespace GameHub.Data
 				case Platform.LINUX:    return "platform-linux-symbolic";
 				case Platform.WINDOWS:  return "platform-windows-symbolic";
 				case Platform.MACOS:    return "platform-macos-symbolic";
-				case Platform.EMULATED: return "gamehub-symbolic";
+				case Platform.EMULATED: return "gamemanager-symbolic";
 			}
 			assert_not_reached();
 		}

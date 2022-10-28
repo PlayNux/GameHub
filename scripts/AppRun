@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "[AppRun ] GameHub AppImage"
+echo "[AppRun ] GameManager AppImage"
 echo "[AppRun ] AppDir: $APPDIR"
 
 export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"
@@ -13,7 +13,7 @@ export LD_LIBRARY_PATH="$APPDIR/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0:$LD_LIBR
 
 [ -e "$APPDIR/checkrt.sh" ] && . "$APPDIR/checkrt.sh" || echo "[AppRun ] Skipping CheckRT"
 
-echo "[AppRun ] Starting GameHub"
+echo "[AppRun ] Starting GameManager"
 
 cd "$APPDIR/usr"
-"$APPDIR/usr/bin/com.github.tkashkin.gamehub" "$@"
+"$APPDIR/usr/bin/io.playnux.gamemanager" "$@"

@@ -1,26 +1,26 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gee;
-using GameHub.Data.DB;
-using GameHub.Utils;
+using GameManager.Data.DB;
+using GameManager.Utils;
 
-namespace GameHub.Data.Sources.Humble
+namespace GameManager.Data.Sources.Humble
 {
 	public class Humble: GameSource
 	{
@@ -48,7 +48,7 @@ namespace GameHub.Data.Sources.Humble
 			}
 			var escaped = "%s=\"%s\";".printf(AUTH_COOKIE, token.replace("=", "\\075"));
 
-			if(GameHub.Application.log_auth && GameHub.Application.log_verbose)
+			if(GameManager.Application.log_auth && GameManager.Application.log_verbose)
 			{
 				debug("[Humble.escaped_cookie] Unescaped: %s", token);
 				debug("[Humble.escaped_cookie] Escaped:   %s", escaped);
@@ -105,13 +105,13 @@ namespace GameHub.Data.Sources.Humble
 				return true;
 			}
 
-			var wnd = new GameHub.UI.Windows.WebAuthWindow(this.name, "https://www.humblebundle.com/login?goto=home", "https://www.humblebundle.com/home/library", AUTH_COOKIE);
+			var wnd = new GameManager.UI.Windows.WebAuthWindow(this.name, "https://www.humblebundle.com/login?goto=home", "https://www.humblebundle.com/home/library", AUTH_COOKIE);
 
 			wnd.finished.connect(token =>
 			{
 				user_token = token.replace("\"", "").replace("\\\\075", "=").replace("\\075", "=");
 				settings.access_token = user_token ?? "";
-				if(GameHub.Application.log_auth)
+				if(GameManager.Application.log_auth)
 				{
 					debug("[Auth] Humble access token: %s", user_token);
 				}

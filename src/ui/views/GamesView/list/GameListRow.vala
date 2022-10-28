@@ -1,32 +1,32 @@
 /*
-This file is part of GameHub.
+This file is part of GameManager.
 Copyright (C) 2018-2019 Anatoliy Kashkin
 
-GameHub is free software: you can redistribute it and/or modify
+GameManager is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-GameHub is distributed in the hope that it will be useful,
+GameManager is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with GameHub.  If not, see <https://www.gnu.org/licenses/>.
+along with GameManager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 using Gtk;
 using Gdk;
 using Gee;
 
-using GameHub.Data;
-using GameHub.Data.Adapters;
-using GameHub.Data.DB;
-using GameHub.Utils;
-using GameHub.UI.Widgets;
+using GameManager.Data;
+using GameManager.Data.Adapters;
+using GameManager.Data.DB;
+using GameManager.Utils;
+using GameManager.UI.Widgets;
 
-namespace GameHub.UI.Views.GamesView.List
+namespace GameManager.UI.Views.GamesView.List
 {
 	public class GameListRow: ListBoxRow
 	{
@@ -75,7 +75,7 @@ namespace GameHub.UI.Views.GamesView.List
 			}
 		}
 
-		private GameHub.Settings.UI.Appearance ui_settings;
+		private GameManager.Settings.UI.Appearance ui_settings;
 
 		public GameListRow(Game? game=null, GamesAdapter? adapter=null)
 		{
@@ -95,7 +95,7 @@ namespace GameHub.UI.Views.GamesView.List
 			icon_overlay = new Overlay();
 			icon_overlay.no_show_all = true;
 
-			no_icon_indicator = new Image.from_icon_name("gamehub-symbolic", IconSize.BUTTON);
+			no_icon_indicator = new Image.from_icon_name("gamemanager-symbolic", IconSize.BUTTON);
 			no_icon_indicator.get_style_context().add_class("no-icon-indicator");
 			no_icon_indicator.halign = Align.CENTER;
 			no_icon_indicator.valign = Align.CENTER;
@@ -145,7 +145,7 @@ namespace GameHub.UI.Views.GamesView.List
 
 			notify["is-selected"].connect(update_icon);
 
-			ui_settings = GameHub.Settings.UI.Appearance.instance;
+			ui_settings = GameManager.Settings.UI.Appearance.instance;
 			ui_settings.list_style_updated.connect(update_style);
 			update_style(ui_settings.list_style_cache);
 
@@ -285,14 +285,14 @@ namespace GameHub.UI.Views.GamesView.List
 		private void updates_handler()
 		{
 			Idle.add(() => {
-				updated_icon.visible = game is GameHub.Data.Sources.GOG.GOGGame && (game as GameHub.Data.Sources.GOG.GOGGame).has_updates;
+				updated_icon.visible = game is GameManager.Data.Sources.GOG.GOGGame && (game as GameManager.Data.Sources.GOG.GOGGame).has_updates;
 				return Source.REMOVE;
 			}, Priority.LOW);
 		}
 
 		public void update_style(string[] style)
 		{
-			var is_gog_game = game is GameHub.Data.Sources.GOG.GOGGame;
+			var is_gog_game = game is GameManager.Data.Sources.GOG.GOGGame;
 			var is_installed = game != null && game.status != null && game.status.state != Game.State.UNINSTALLED;
 
 			var style_prefix = is_installed ? "installed" : "uninstalled";
